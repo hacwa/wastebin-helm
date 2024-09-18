@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: wastebin
+spec:
+  selector:
+    matchLabels:
+      app: wastebin
+  template:
+    metadata:
+      labels:
+        app: wastebin
+    spec:
+      containers:
+        - name: wastebin
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.service.port }}
+

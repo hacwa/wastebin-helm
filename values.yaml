@@ -1,0 +1,18 @@
+replicaCount: 1
+
+image:
+  repository: quxfoo/wastebin
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8088
+
+ingress:
+  enabled: true
+  annotations: {}
+  host: "wastebin.local"
+  class: nginx
+  tls: []
+
